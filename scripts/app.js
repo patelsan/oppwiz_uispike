@@ -1,7 +1,7 @@
-var myViewModel = {
-    userAge: null,
-    userName: ko.observable()
-};
-myViewModel.userName("bob");
+//instantiate the view models
+navigationViewModel = new Models.NavigationViewModel();
+opportunityViewModel = new Models.OpportunityViewModel();
 
-ko.applyBindings(myViewModel);
+//do apply the bindings
+ko.applyBindings(navigationViewModel, document.querySelector('#navbar'));
+ko.applyBindings(opportunityViewModel, document.querySelector('#workspace'));
