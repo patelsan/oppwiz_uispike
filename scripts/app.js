@@ -1,1 +1,7 @@
-var asdf = 0;
+var myViewModel = {
+    userAge: null,
+    userName: ko.observable()
+};
+myViewModel.userName("bob");
+
+ko.applyBindings(myViewModel);
