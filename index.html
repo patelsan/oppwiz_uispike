@@ -1,22 +1,61 @@
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>ui spike</title>
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" type="text/css" href="styles/app.css">
-        <link rel="stylesheet" type="text/css" href="styles/bs.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="left">left</div>
-            <div class="right">right</div>
-        </div>
+<!--[if gt IE 8]><!-->
+<html>
+<!--<![endif]-->
 
-        <script src="scripts/bs.js"></script>
-        <script src="scripts/ko.js"></script>
-        <script src="scripts/app.js"></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ui spike</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap202.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-responsive202.css">
+    <link rel="stylesheet" type="text/css" href="styles/app.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="span3">
+                <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#collapseOne">
+                    simple collapsible
+                </button>
+            </div>
+            <div class="span9">
+                <div class="accordion" id="accordion2">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            Collapsible Group Item #1
+                          </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                Anim pariatur cliche...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                            Collapsible Group Item #2
+                          </a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                Anim pariatur cliche...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/jquery-1.7.2.min.js"></script>
+    <script src="scripts/knockout-2.2.1.debug.js"></script>
+    <script src="scripts/bootstrap-collapse232.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
 </html>
