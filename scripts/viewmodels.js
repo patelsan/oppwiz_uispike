@@ -207,3 +207,7 @@
   });
 
 }).call(this);
+
+/*
+//@ sourceMappingURL=viewmodels.map
+*/
