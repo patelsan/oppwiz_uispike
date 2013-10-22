@@ -31,4 +31,8 @@
 	margin-bottom: 1px
 }
 
+.field-search{
+    width: 110px;
+}
+
 label span{color: red;font-size: 1.2em}

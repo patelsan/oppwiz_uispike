@@ -23,10 +23,11 @@
         </div>
     </div>
     <div class="spn2-abs" id="navbar">
+        <input data-bind="value: fieldSearchText, valueUpdate: 'keyup'" class="field-search" type="text"/>
         <div data-bind="foreach: fieldMap" class="nav-tree">
             <h5 data-bind="text: InfoGroup"></h5>
             <div data-bind="foreach: $data.Fields" class="nav-branch">
-                <button type="button" class="btn btn-mini btn-default" data-toggle="collapse" data-parent="#accordion2" data-bind="text: Name,attr: {title: Name, 'data-target': '#' + $parent.GroupID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}"></button>
+                <button type="button" class="btn btn-mini btn-default" data-toggle="collapse" data-parent="#accordion2" data-bind="text: Name,attr: {title: Name, 'data-target': '#' + $parent.GroupID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}, visible: Display"></button>
             </div>
         </div>
     </div>
