@@ -23,10 +23,11 @@
         </div>
     </div>
     <div class="spn2-abs" id="navbar">
+        <input data-bind="value: fieldSearchText, valueUpdate: 'keyup'" class="field-search" type="text"/>
         <div data-bind="foreach: fieldMap" class="nav-tree">
             <h5 data-bind="text: InfoGroup"></h5>
             <div data-bind="foreach: $data.Fields" class="nav-branch">
-                <button type="button" class="btn btn-mini" data-bind="text: Name, attr: {title: Name, 'data-href1': $parent.GroupID, 'data-href2': $data.ID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}"></button>
+                <button type="button" class="btn btn-mini" data-bind="text: Name, attr: {title: Name, 'data-href1': $parent.GroupID, 'data-href2': $data.ID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}, visible: Display"></button>
             </div>
         </div>
     </div>
@@ -40,15 +41,15 @@
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span8">
-                                <label class="control-label"><mark>*</mark> Opportunity Name</label>
+                                <label id="opportunityname" class="control-label"><mark>*</mark> Opportunity Name</label>
                                 <div class="controls">
-                                    <input id="opportunityname" type="text" placeholder="Input" class="input-block-level" data-bind="value: data.OpportunityName" />
+                                    <input id="opportunityname2" type="text" placeholder="Input" class="input-block-level" data-bind="value: data.OpportunityName" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label"><mark>*</mark> Opportunity Status</label>
+                                <label class="control-label" id="opportunitystatus"><mark>*</mark> Opportunity Status</label>
                                 <div class="controls">
-                                    <select class="input-block-level" id="opportunitystatus">
+                                    <select class="input-block-level" id="opportunitystatus2">
                                         <option>Select</option>
                                     </select>
                                 </div>
@@ -56,21 +57,21 @@
                         </div>
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label"><mark>*</mark> Transaction Type</label>
+                                <label class="control-label" id="transactiontype"><mark>*</mark> Transaction Type</label>
                                 <div class="controls">
-                                    <input id="transactiontype" type="text" placeholder="Input" class="input-block-level" />
+                                    <input id="transactiontype2" type="text" placeholder="Input" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label">Transaction Subtype</label>
+                                <label class="control-label" id="transactionsubtype">Transaction Subtype</label>
                                 <div class="controls">
-                                    <input id="transactionsubtype" type="text" placeholder="Input" class="input-block-level" />
+                                    <input id="transactionsubtype2" type="text" placeholder="Input" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label"><mark>*</mark> Close Probability</label>
+                                <label class="control-label" id="closeprobability"><mark>*</mark> Close Probability</label>
                                 <div class="controls">
-                                    <input id="closeprobability" type="range" class="input-block-level" />
+                                    <input id="closeprobability2" type="range" class="input-block-level" />
                                 </div>
                             </div>
                         </div>
@@ -317,9 +318,9 @@
                             <div class="span4">date</div>
                             <div class="span4">date</div>
                             <div class="control-group span4">
-                                <label class="control-label"><mark>*</mark> Input</label>
+                                <label id="primary1" class="control-label"><mark>*</mark> Input</label>
                                 <div class="controls">
-                                    <input id="npt18" type="text" class="input-block-level" />
+                                    <input id="primary12" type="text" class="input-block-level" />
                                 </div>
                             </div>
                         </div>
@@ -348,9 +349,9 @@
                             <div class="span4">date</div>
                             <div class="span4">date</div>
                             <div class="control-group span4">
-                                <label class="control-label"><mark>*</mark> Input</label>
+                                <label id="primary2" class="control-label"><mark>*</mark> Input</label>
                                 <div class="controls">
-                                    <input id="npt19" type="text" class="input-block-level" />
+                                    <input id="primary22" type="text" class="input-block-level" />
                                 </div>
                             </div>
                         </div>
@@ -379,9 +380,9 @@
                             <div class="span4">date</div>
                             <div class="span4">date</div>
                             <div class="control-group span4">
-                                <label class="control-label"><mark>*</mark> Input</label>
+                                <label id="primary3" class="control-label"><mark>*</mark> Input</label>
                                 <div class="controls">
-                                    <input id="npt20" type="text" class="input-block-level" />
+                                    <input id="primary32" type="text" class="input-block-level" />
                                 </div>
                             </div>
                         </div>
