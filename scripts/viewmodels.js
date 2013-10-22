@@ -101,9 +101,9 @@
           }
         ])
       });
-      return this.fieldMap.push({
+      this.fieldMap.push({
         InfoGroup: 'Key Contacts',
-        GroupID: 'keydates',
+        GroupID: 'keycontacts',
         Fields: ko.observableArray([
           {
             Name: 'Primary Client Contact',
@@ -117,6 +117,36 @@
           }, {
             Name: 'Deal Market',
             ID: 'dealmarket'
+          }
+        ])
+      });
+      this.fieldMap.push({
+        InfoGroup: 'Competitors',
+        GroupID: 'competitors',
+        Fields: ko.observableArray([
+          {
+            Name: 'Primary',
+            ID: 'primary'
+          }
+        ])
+      });
+      this.fieldMap.push({
+        InfoGroup: 'Deal costs',
+        GroupID: 'dealcosts',
+        Fields: ko.observableArray([
+          {
+            Name: 'Primary',
+            ID: 'primary'
+          }
+        ])
+      });
+      return this.fieldMap.push({
+        InfoGroup: 'Documents',
+        GroupID: 'documents',
+        Fields: ko.observableArray([
+          {
+            Name: 'Primary',
+            ID: 'primary'
           }
         ])
       });
@@ -177,7 +207,3 @@
   });
 
 }).call(this);
-
-/*
-//@ sourceMappingURL=viewmodels.map
-*/

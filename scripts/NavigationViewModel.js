@@ -83,7 +83,7 @@
       });
       return this.fieldMap.push({
         InfoGroup: 'Key Contacts',
-        GroupID: 'keydates',
+        GroupID: 'keycontacts',
         Fields: ko.observableArray([
           {
             Name: 'Primary Client Contact',

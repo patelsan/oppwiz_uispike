@@ -21,7 +21,10 @@ class NavigationViewModel
     this.fieldMap.push({InfoGroup: 'Properties', GroupID:'properties',Fields: ko.observableArray([{Name: 'Property Location Market', ID: 'propertylocationmarket'}, {Name: 'Low Property Value', ID: 'lowpropertyvalue'}, {Name: 'High Property Value', ID: 'highpropertyvalue'}, {Name: 'Capital Raised', ID: 'capitalraised'}])})
     this.fieldMap.push({InfoGroup: 'Key Dates', GroupID:'keydates',Fields: ko.observableArray([{Name: 'Start Date', ID: 'startdate'}, {Name: 'Pitch Proposal Date', ID: 'pitchproposaldate'}, {Name: 'Listing Expiration Date', ID: 'listingexpirationdate'}, {Name: 'Close Probability', ID: 'closeprobability'}])})
     this.fieldMap.push({InfoGroup: 'Commission', GroupID:'commission',Fields: ko.observableArray([{Name: 'Total Commission', ID: 'totalcommission'}, {Name: 'Fee Percentage', ID: 'feepercentage'}])})
-    this.fieldMap.push({InfoGroup: 'Key Contacts', GroupID:'keydates',Fields: ko.observableArray([{Name: 'Primary Client Contact', ID: 'primaryclientcontact'}, {Name: 'Bill To Contact', ID: 'billtocontact'}, {Name: 'Generating Market', ID: 'generatingmarket'}, {Name: 'Deal Market', ID: 'dealmarket'}])})
+    this.fieldMap.push({InfoGroup: 'Key Contacts', GroupID:'keycontacts',Fields: ko.observableArray([{Name: 'Primary Client Contact', ID: 'primaryclientcontact'}, {Name: 'Bill To Contact', ID: 'billtocontact'}, {Name: 'Generating Market', ID: 'generatingmarket'}, {Name: 'Deal Market', ID: 'dealmarket'}])})
+    this.fieldMap.push({InfoGroup: 'Competitors', GroupID:'competitors',Fields: ko.observableArray([{Name: 'Primary', ID: 'primary'}])})
+    this.fieldMap.push({InfoGroup: 'Deal costs', GroupID:'dealcosts',Fields: ko.observableArray([{Name: 'Primary', ID: 'primary'}])})
+    this.fieldMap.push({InfoGroup: 'Documents', GroupID:'documents',Fields: ko.observableArray([{Name: 'Primary', ID: 'primary'}])})
 
 namespace 'Models', (exports)->
   exports.NavigationViewModel = NavigationViewModel

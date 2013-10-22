@@ -3,6 +3,7 @@
 <!--[if gt IE 8]><!-->
 <html>
 <!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" type="text/css" href="styles/bootstrap-responsive202.css">
     <link rel="stylesheet" type="text/css" href="styles/app.css">
 </head>
+
 <body>
     <div class="navbar navbar-inverse">
         <div class="navbar-inner">
@@ -20,118 +22,344 @@
             </div>
         </div>
     </div>
-    <div class="contain">
-        <div class="row-fluid">
-            <div class="span2" id="navbar">
-                <ul data-bind="foreach: fieldMap" class="nav nav-tabs nav-stacked">
-                    <li>
-                        <span data-bind="text: InfoGroup"></span>
-                        <ul class="nav nav-tabs nav-stacked" data-bind="foreach: $data.Fields">
-                            <li>
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" data-bind="attr : {href: '#' + $parent.GroupID}, css: {'btn-danger': $root.opportunity.isRequired.bind(null, $data.ID)()}">
-                                    <span data-bind="text: Name"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav nav-tabs nav-stacked">
-                    <li>
-                        <button type="button" class="btn btn-default" data-toggle="collapse" data-parent="#accordion2" data-target="#collapseOne">tab 1</button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-default" data-toggle="collapse" data-parent="#accordion2" data-target="#collapseTwo">tab 2</button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-default" data-toggle="collapse" data-parent="#accordion2" data-target="#collapseThree">tab 3</button>
-                    </li>
-                </ul>
+    <div class="spn2-abs" id="navbar">
+        <div data-bind="foreach: fieldMap" class="nav-tree">
+            <h5 data-bind="text: InfoGroup"></h5>
+            <div data-bind="foreach: $data.Fields" class="nav-branch">
+                <button type="button" class="btn btn-mini btn-default" data-toggle="collapse" data-parent="#accordion2" data-bind="text: Name,attr: {title: Name, 'data-target': '#' + $parent.GroupID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}"></button>
             </div>
-            <div class="span10" id="workspace">
-                <div class="accordion" id="accordion2">
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Collapsible Group Item #1</a>
+        </div>
+    </div>
+    <div class="spn10-abs" id="workspace">
+        <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#summary">Opportunity summary</a>
+                </div>
+                <div id="summary" class="accordion-body in collapse" style="height: auto;">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="control-group span8">
+                                <label class="control-label"><mark>*</mark> Opportunity Name</label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input" class="input-block-level" class="input-block-level" data-bind="value: data.OpportunityName" />
+                                </div>
+                            </div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Opportunity Status</label>
+                                <div class="controls">
+                                    <select class="input-block-level">
+                                        <option>Select</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div id="summary" class="accordion-body in collapse" style="height: auto;">
-                            <div class="accordion-inner">
-                                <form class="form-horizontal">
-                                    <div class="control-group" data-field="{Name: 'Opportunity Name', ID:'opportunityname'}">
-                                        <label class="control-label" for="username">User Name</label>
-                                        <div class="controls">
-                                            <input type="text" id="username" placeholder="Email" class="span2" data-bind="value: data.OpportunityName"/>
-                                        </div>
+                        <div class="row-fluid">
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Transaction Type</label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input" class="input-block-level" />
+                                </div>
+                            </div>
+                            <div class="control-group span4">
+                                <label class="control-label">Transaction Subtype</label>
+                                <div class="controls">
+                                    <input type="text" placeholder="Input" class="input-block-level" />
+                                </div>
+                            </div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Close Probability</label>
+                                <div class="controls">
+                                    <input type="range" class="input-block-level" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span8">&nbsp;</div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Security Level</label>
+                                <div class="btn-group">
+                                    <button type="button" class="btn active">Low</button>
+                                    <button type="button" class="btn">Medium</button>
+                                    <button type="button" class="btn">High</button>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>Primary Client</h4>
+                        <div class="well well-row-fluid">
+                            <div class="row-fluid">
+                                <div class="control-group span8">
+                                    <label class="control-label"><mark>*</mark> Client</label>
+                                    <div class="controls row-fluid">
+                                        <input class="span11" id="appendedInputButtons" type="text" placeholder="Input">
+                                        <button class="btn" type="button">!</button>
                                     </div>
-                                    <div class="control-group" data-field="age">
-                                        <label class="control-label" for="age">Age</label>
-                                        <div class="controls">
-                                            <input type="text" id="age" placeholder="Age" class="span2"  data-bind="value: data.TransactionType"/>
-                                        </div>
+                                </div>
+                                <div class="control-group span4">
+                                    <label class="control-label">&nbsp;</label>
+                                    <div class="controls">
+                                        <button type="button" class="btn input-block-level">Add new client...</button>
                                     </div>
-                                </form>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="control-group span4">
+                                    <label class="control-label">Client Type</label>
+                                    <div class="controls">
+                                        <select class="input-block-level">
+                                            <option>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group span4">
+                                    <label class="control-label">Investor Type</label>
+                                    <div class="controls">
+                                        <select class="input-block-level">
+                                            <option>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <button type="button" class="btn input-block-level">Add secondary clients...</button>
+                            </div>
+                        </div>
+                        <br>
+                        <h5>Comments</h5>
+                        <textarea rows="3" class="input-block-level"></textarea>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#properties">Next</button>
+                                <button type="button" class="btn btn-default pull-right" disabled>Back</button>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Collapsible Group Item #2
-                            </a>
-                        </div>
-                        <div id="properties" class="accordion-body collapse" style="height: 0px;">
-                            <div class="accordion-inner">
-                                <form class="form-horizontal">
-                                    <div class="row-fluid">
-                                        <div class="control-group span6">
-                                            <label class="control-label" for="inputEmail2">Email2</label>
-                                            <div class="controls">
-                                                <input type="text" id="inputEmail2" placeholder="Email2" class="span2"/>
-                                            </div>
-                                        </div>
-                                        <div class="control-group span6">
-                                            <label class="control-label" for="inputPassword2">Password2</label>
-                                            <div class="controls">
-                                                <input type="password" id="inputPassword2" placeholder="Password2" class="span2"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row-fluid">
-                                        <div class="control-group span6">
-                                            <label class="control-label" for="input1">Input1</label>
-                                            <div class="controls">
-                                                <input type="text" id="input1" placeholder="Input1" class="span2"/>
-                                            </div>
-                                        </div>
-                                        <div class="control-group span6">
-                                            <label class="control-label" for="input2">Input2</label>
-                                            <div class="controls">
-                                                <input type="text" id="input2" placeholder="Input2" class="span2"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#properties">Properties</a>
+                </div>
+                <div id="properties" class="accordion-body collapse" style="height: 0px;">
+                    <div class="accordion-inner">
+                        <h4>Properties</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Building name
+                                    </th>
+                                    <th>Property address
+                                    </th>
+                                    <th>City
+                                    </th>
+                                    <th>State
+                                    </th>
+                                    <th>Postal Code
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd">
+                                    <td class="opp-det-toggle">Teal One Plaza</td>
+                                    <td>455 North Wacker Drive</td>
+                                    <td>Schaumburg</td>
+                                    <td>IL</td>
+                                    <td>60169</td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="opp-det-toggle">Ptarmigan Pterrace</td>
+                                    <td>8323 S. Whipple Dr.</td>
+                                    <td>Highwood</td>
+                                    <td>IL</td>
+                                    <td>60040</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="opp-det-toggle">Paladin Tower</td>
+                                    <td>4321 East Ohio Avenue</td>
+                                    <td>Chicago</td>
+                                    <td>IL</td>
+                                    <td>60601</td>
+                                </tr>
+                                <tr class="even">
+                                    <td class="opp-det-toggle">Kimjongun Place</td>
+                                    <td>4527 North Harlem Avenue</td>
+                                    <td>Chicago</td>
+                                    <td>IL</td>
+                                    <td>60657</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="opp-det-toggle">Juche Executive Suites</td>
+                                    <td>4527 Peoples Plaza</td>
+                                    <td>Highland Park</td>
+                                    <td>IL</td>
+                                    <td>60035</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keydates">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#summary">Back</button>
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">Collapsible Group Item #3</a>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#keydates">Key Dates</a>
+                </div>
+                <div id="keydates" class="accordion-body collapse" style="height: 0px;">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
                         </div>
-                        <div id="keydates" class="accordion-body collapse" style="height: 0px;">
-                            <div class="accordion-inner">
-                                <form class="form-horizontal">
-                                    <div class="control-group">
-                                        <label class="control-label" for="inputEmail3">Email3</label>
-                                        <div class="controls">
-                                            <input type="text" id="inputEmail3" placeholder="Email3" class="span2"/>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
-                                        <label class="control-label" for="inputPassword3">Password3</label>
-                                        <div class="controls">
-                                            <input type="password" id="inputPassword3" placeholder="Password3" class="span2"/>
-                                        </div>
-                                    </div>
-                                </form>
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#commission">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#properties">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#commission">Commission</a>
+                </div>
+                <div id="commission" class="accordion-body collapse" style="height: 0px;">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keycontacts">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keydates">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#keycontacts">Key Contacts</a>
+                </div>
+                <div id="keycontacts" class="accordion-body collapse" style="height: 0px;">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#competitors">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#commission">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#competitors">Competitors</a>
+                </div>
+                <div id="competitors" class="accordion-body collapse" style="height: 0px;">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#dealcosts">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keycontacts">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#dealcosts">Deal costs</a>
+                </div>
+                <div id="dealcosts" class="accordion-body collapse" style="height: 0px;">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#documents">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#competitors">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#documents">Documents</a>
+                </div>
+                <div id="documents" class="accordion-body collapse" style="height: 0px;">
+                    <div class="accordion-inner">
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                            <div class="span4">date</div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span4">&nbsp;</div>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#summary">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#dealcosts">Back</button>
                             </div>
                         </div>
                     </div>
@@ -145,4 +373,5 @@
     <script src="scripts/viewmodels.js"></script>
     <script src="scripts/app.js"></script>
 </body>
+
 </html>

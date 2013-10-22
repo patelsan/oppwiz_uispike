@@ -1,1 +1,34 @@
-.contain{margin:0 10px;}
+
+.spn2-abs,.spn10-abs{
+	position: absolute;
+	top:65px;
+	bottom: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.spn2-abs{
+	left:9px;
+	width:140px;
+}
+
+.spn10-abs{
+	left: 175px;
+	right:9px;
+}
+
+.nav-tree{}
+.nav-branch{
+	padding:0 0 12px 9px
+}
+.nav-branch button {
+	display: block;
+	width: 100%;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 1px
+}
+
+label span{color: red;font-size: 1.2em}
