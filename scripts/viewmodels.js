@@ -45,8 +45,23 @@
             Name: 'Transaction Type',
             ID: 'transactiontype'
           }, {
+            Name: 'Transaction sub type',
+            ID: 'transactionsubtype'
+          }, {
+            Name: 'Close Probability',
+            ID: 'closeprobability'
+          }, {
+            Name: 'Security level',
+            ID: 'securitylevel'
+          }, {
             Name: 'Client',
             ID: 'client'
+          }, {
+            Name: 'Client Type',
+            ID: 'clienttype'
+          }, {
+            Name: 'Investor Type',
+            ID: 'investortype'
           }
         ])
       });
@@ -82,9 +97,6 @@
           }, {
             Name: 'Listing Expiration Date',
             ID: 'listingexpirationdate'
-          }, {
-            Name: 'Close Probability',
-            ID: 'closeprobability'
           }
         ])
       });
@@ -126,7 +138,7 @@
         Fields: ko.observableArray([
           {
             Name: 'Primary',
-            ID: 'primary'
+            ID: 'npt18'
           }
         ])
       });
@@ -136,7 +148,7 @@
         Fields: ko.observableArray([
           {
             Name: 'Primary',
-            ID: 'primary'
+            ID: 'npt19'
           }
         ])
       });
@@ -146,7 +158,7 @@
         Fields: ko.observableArray([
           {
             Name: 'Primary',
-            ID: 'primary'
+            ID: 'npt20'
           }
         ])
       });

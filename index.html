@@ -26,7 +26,7 @@
         <div data-bind="foreach: fieldMap" class="nav-tree">
             <h5 data-bind="text: InfoGroup"></h5>
             <div data-bind="foreach: $data.Fields" class="nav-branch">
-                <button type="button" class="btn btn-mini btn-default" data-toggle="collapse" data-parent="#accordion2" data-bind="text: Name,attr: {title: Name, 'data-target': '#' + $parent.GroupID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}"></button>
+                <button type="button" class="btn btn-mini" data-bind="text: Name, attr: {title: Name, 'data-href1': $parent.GroupID, 'data-href2': $data.ID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}"></button>
             </div>
         </div>
     </div>
@@ -36,19 +36,19 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#summary">Opportunity summary</a>
                 </div>
-                <div id="summary" class="accordion-body in collapse" style="height: auto;">
+                <div id="summary" class="accordion-body in">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span8">
                                 <label class="control-label"><mark>*</mark> Opportunity Name</label>
                                 <div class="controls">
-                                    <input type="text" placeholder="Input" class="input-block-level" class="input-block-level" data-bind="value: data.OpportunityName" />
+                                    <input id="opportunityname" type="text" placeholder="Input" class="input-block-level" data-bind="value: data.OpportunityName" />
                                 </div>
                             </div>
                             <div class="control-group span4">
                                 <label class="control-label"><mark>*</mark> Opportunity Status</label>
                                 <div class="controls">
-                                    <select class="input-block-level">
+                                    <select class="input-block-level" id="opportunitystatus">
                                         <option>Select</option>
                                     </select>
                                 </div>
@@ -58,19 +58,19 @@
                             <div class="control-group span4">
                                 <label class="control-label"><mark>*</mark> Transaction Type</label>
                                 <div class="controls">
-                                    <input type="text" placeholder="Input" class="input-block-level" />
+                                    <input id="transactiontype" type="text" placeholder="Input" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
                                 <label class="control-label">Transaction Subtype</label>
                                 <div class="controls">
-                                    <input type="text" placeholder="Input" class="input-block-level" />
+                                    <input id="transactionsubtype" type="text" placeholder="Input" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
                                 <label class="control-label"><mark>*</mark> Close Probability</label>
                                 <div class="controls">
-                                    <input type="range" class="input-block-level" />
+                                    <input id="closeprobability" type="range" class="input-block-level" />
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                             <div class="span8">&nbsp;</div>
                             <div class="control-group span4">
                                 <label class="control-label"><mark>*</mark> Security Level</label>
-                                <div class="btn-group">
+                                <div class="btn-group" id="securitylevel">
                                     <button type="button" class="btn active">Low</button>
                                     <button type="button" class="btn">Medium</button>
                                     <button type="button" class="btn">High</button>
@@ -89,9 +89,9 @@
                         <div class="well well-row-fluid">
                             <div class="row-fluid">
                                 <div class="control-group span8">
-                                    <label class="control-label"><mark>*</mark> Client</label>
+                                    <label class="control-label" id="client" for="client2"><mark>*</mark> Client</label>
                                     <div class="controls row-fluid">
-                                        <input class="span11" id="appendedInputButtons" type="text" placeholder="Input">
+                                        <input id="client2" class="span11" type="text" placeholder="Input">
                                         <button class="btn" type="button">!</button>
                                     </div>
                                 </div>
@@ -106,15 +106,15 @@
                                 <div class="control-group span4">
                                     <label class="control-label">Client Type</label>
                                     <div class="controls">
-                                        <select class="input-block-level">
+                                        <select class="input-block-level" id="clienttype">
                                             <option>Select</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="control-group span4">
-                                    <label class="control-label">Investor Type</label>
+                                    <label class="control-label" id="investortype" for="investortype2">Investor Type</label>
                                     <div class="controls">
-                                        <select class="input-block-level">
+                                        <select class="input-block-level" id="investortype2">
                                             <option>Select</option>
                                         </select>
                                     </div>
@@ -143,7 +143,7 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#properties">Properties</a>
                 </div>
-                <div id="properties" class="accordion-body collapse" style="height: 0px;">
+                <div id="properties" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <h4>Properties</h4>
                         <table class="table table-bordered">
@@ -213,7 +213,7 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#keydates">Key Dates</a>
                 </div>
-                <div id="keydates" class="accordion-body collapse" style="height: 0px;">
+                <div id="keydates" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="span4">date</div>
@@ -223,7 +223,12 @@
                         <div class="row-fluid">
                             <div class="span4">date</div>
                             <div class="span4">date</div>
-                            <div class="span4">date</div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Input</label>
+                                <div class="controls">
+                                    <input id="npt15" type="text" class="input-block-level" />
+                                </div>
+                            </div>
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
@@ -239,7 +244,7 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#commission">Commission</a>
                 </div>
-                <div id="commission" class="accordion-body collapse" style="height: 0px;">
+                <div id="commission" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="span4">date</div>
@@ -249,7 +254,12 @@
                         <div class="row-fluid">
                             <div class="span4">date</div>
                             <div class="span4">date</div>
-                            <div class="span4">date</div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Input</label>
+                                <div class="controls">
+                                    <input id="npt16" type="text" class="input-block-level" />
+                                </div>
+                            </div>
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
@@ -265,7 +275,7 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#keycontacts">Key Contacts</a>
                 </div>
-                <div id="keycontacts" class="accordion-body collapse" style="height: 0px;">
+                <div id="keycontacts" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="span4">date</div>
@@ -275,7 +285,12 @@
                         <div class="row-fluid">
                             <div class="span4">date</div>
                             <div class="span4">date</div>
-                            <div class="span4">date</div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Input</label>
+                                <div class="controls">
+                                    <input id="npt17" type="text" class="input-block-level" />
+                                </div>
+                            </div>
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
@@ -291,7 +306,7 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#competitors">Competitors</a>
                 </div>
-                <div id="competitors" class="accordion-body collapse" style="height: 0px;">
+                <div id="competitors" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="span4">date</div>
@@ -301,7 +316,12 @@
                         <div class="row-fluid">
                             <div class="span4">date</div>
                             <div class="span4">date</div>
-                            <div class="span4">date</div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Input</label>
+                                <div class="controls">
+                                    <input id="npt18" type="text" class="input-block-level" />
+                                </div>
+                            </div>
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
@@ -317,7 +337,7 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#dealcosts">Deal costs</a>
                 </div>
-                <div id="dealcosts" class="accordion-body collapse" style="height: 0px;">
+                <div id="dealcosts" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="span4">date</div>
@@ -327,7 +347,12 @@
                         <div class="row-fluid">
                             <div class="span4">date</div>
                             <div class="span4">date</div>
-                            <div class="span4">date</div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Input</label>
+                                <div class="controls">
+                                    <input id="npt19" type="text" class="input-block-level" />
+                                </div>
+                            </div>
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
@@ -343,7 +368,7 @@
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#documents">Documents</a>
                 </div>
-                <div id="documents" class="accordion-body collapse" style="height: 0px;">
+                <div id="documents" class="accordion-body collapse" >
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="span4">date</div>
@@ -353,7 +378,12 @@
                         <div class="row-fluid">
                             <div class="span4">date</div>
                             <div class="span4">date</div>
-                            <div class="span4">date</div>
+                            <div class="control-group span4">
+                                <label class="control-label"><mark>*</mark> Input</label>
+                                <div class="controls">
+                                    <input id="npt20" type="text" class="input-block-level" />
+                                </div>
+                            </div>
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
