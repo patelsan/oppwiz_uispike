@@ -6,10 +6,17 @@ opportunityViewModel = new Models.OpportunityViewModel();
 ko.applyBindings(navigationViewModel, document.querySelector('#navbar'));
 ko.applyBindings(opportunityViewModel, document.querySelector('#workspace'));
 
-$('.nav-tree').delegate('button','click',function(e){
-	$('.in').collapse('hide');
-	$('#' + e.target.dataset.href1).collapse('show');
-	window.location.hash = e.target.dataset.href2;
-	$('#' + e.target.dataset.href2+'2').focus();
+$('.nav-tree').delegate('.btn', 'click', function(e) {
+    e.preventDefault();
+
+    var $element = $(e.target.hash + "2");
+    var el = $element.closest('.accordion-group').attr('id');
+    var isopen = $("#"+el).hasClass('open');
+    if( !isopen ){
+        $('.accordion-group').removeClass('open').filter("#"+el).addClass('open');
+    }
+    window.setTimeout(function() {
+        window.location.hash = e.target.hash;
+        $element.focus();
+    }, 5);
 });
-//$('#'+$parent.GroupID).collapse('show');

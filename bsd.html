@@ -15,102 +15,74 @@
 </head>
 
 <body>
-    <div class="navbar-cstm">
-        <span>Cap-Link</span>
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <span class="brand">ui spike</span>
+            </div>
+        </div>
     </div>
     <div class="spn2-abs" id="navbar">
         <div class="nv-top">
-            <h4 class="nv-title">opportunity fields</h4>
-            <input type="text" data-bind="value: fieldSearchText, valueUpdate: 'keyup'" class="input-block-level search-query" placeholder="Filter"/>
+            <h4 class="nv-title">opportunity overview</h4>
+            <input type="text" data-bind="value: fieldSearchText, valueUpdate: 'keyup'" class="input-block-level filter-box" placeholder="Filter"/>
         </div>
-        <hr>
         <div data-bind="foreach: fieldMap" class="nav-tree">
             <h5 data-bind="text: InfoGroup"></h5>
             <div data-bind="foreach: $data.Fields" class="nav-branch">
-                <a class="btn btn-inverse btn-mini" data-bind="attr: {title: Name, href: '#' + $data.ID}, css: {'req': $root.opportunity.isRequired.bind(null, $data.ID)(),'supplied': $root.opportunity.isSupplied.bind(null, $data.ID)()}, visible: Display, text: Name"></a>
+                <a class="btn btn-mini" data-bind="text: Name, attr: {title: Name, href: '#' + $data.ID}, css: {'btn-warning': $root.opportunity.isRequired.bind(null, $data.ID)()}, visible: Display"></a>
             </div>
         </div>
     </div>
     <div class="spn10-abs" id="workspace">
+        <h3 class="ws-title">Opportunity: <strong>Western Springs Expansion for Lindhahl and Associates, Ltd.</strong></h3>
         <div class="accordion" id="accordion2">
-            <div class="accordion-group" id="summary">
+            <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#summary">Summary <em class="pull-right">2 required fields left</em></a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#summary">Opportunity summary</a>
                 </div>
-                <div class="accordion-body">
+                <div id="summary" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span8">
-                                <label id="opportunityname" class="control-label"><mark>*</mark>Opportunity Name</label>
+                                <label id="opportunityname" class="control-label"><mark>*</mark> Opportunity Name</label>
                                 <div class="controls">
-                                    <input id="opportunityname2" type="text" placeholder="Input" class="input-block-level req" data-bind="value: data.OpportunityName" />
+                                    <input id="opportunityname2" type="text" placeholder="Input" class="input-block-level" data-bind="value: data.OpportunityName" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="opportunitystatus"><mark>*</mark>Opportunity Status</label>
+                                <label class="control-label" id="opportunitystatus"><mark>*</mark> Opportunity Status</label>
                                 <div class="controls">
-                                    <select class="input-block-level req" id="opportunitystatus2">
+                                    <select class="input-block-level" id="opportunitystatus2">
                                         <option>Select</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                       <div class="row-fluid">
-                            <div class="control-group span8">
-                                <label class="control-label" id="client"><mark>*</mark>Primary Client</label>
-                                <div class="controls cstm-append">
-                                    <input id="client2" class="input-block-level" type="text" placeholder="Input">
-                                    <button class="btn" type="button">!</button>
-                                </div>
-                            </div>
+                        <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="transactiontype"><mark>*</mark>Transaction Type</label>
+                                <label class="control-label" id="transactiontype"><mark>*</mark> Transaction Type</label>
                                 <div class="controls">
                                     <input id="transactiontype2" type="text" placeholder="Input" class="input-block-level" />
                                 </div>
                             </div>
-                        </div>
-                        <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="clienttype">Client Type</label>
-                                <div class="controls">
-                                    <select class="input-block-level" id="clienttype2">
-                                        <option>Select</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="control-group span4">
-                                <label class="control-label" id="investortype">Investor Type</label>
-                                <div class="controls">
-                                    <select class="input-block-level" id="investortype2">
-                                        <option>Select</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="control-group span4">
-                                <label class="control-label" id="transactionsubtype">Transaction Sub Type</label>
+                                <label class="control-label" id="transactionsubtype">Transaction Subtype</label>
                                 <div class="controls">
                                     <input id="transactionsubtype2" type="text" placeholder="Input" class="input-block-level" />
                                 </div>
                             </div>
-                        </div>
-                        <div class="row-fluid">
-                            <div class="control-group span8">
-                                <label class="control-label">Additional Clients</label>
-                                <table class="table table-bordered">
-                                    <thead><tr><th></th><th>Name</th><th>Type</th></tr></thead>
-                                    <tbody>
-                                        <tr><td><input type="checkbox"/></td><td>Company Name LLC</td><td>Commercial</td></tr>
-                                        <tr><td><input type="checkbox"/></td><td>Company Name LTD</td><td>Commercial</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="closeprobability"><mark>*</mark>Close Probability</label>
+                                <label class="control-label" id="closeprobability"><mark>*</mark> Close Probability</label>
                                 <div class="controls">
                                     <input id="closeprobability2" type="range" class="input-block-level" />
                                 </div>
-                                <label class="control-label" id="securitylevel"><mark>*</mark>Security Level</label>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span8">&nbsp;</div>
+                            <div class="control-group span4">
+                                <label class="control-label" id="securitylevel"><mark>*</mark> Security Level</label>
                                 <div class="btn-group" id="securitylevel2">
                                     <button type="button" class="btn active">Low</button>
                                     <button type="button" class="btn">Medium</button>
@@ -118,41 +90,73 @@
                                 </div>
                             </div>
                         </div>
+                        <h4>Primary Client</h4>
+                        <div class="well well-row-fluid">
+                            <div class="row-fluid">
+                                <div class="control-group span8">
+                                    <label class="control-label" id="client"><mark>*</mark> Client</label>
+                                    <div class="controls input-append">
+                                        <input id="client2" class="search-query" type="text" placeholder="Input">
+                                        <button class="btn" type="button">!</button>
+                                    </div>
+                                </div>
+                                <div class="control-group span4">
+                                    <label class="control-label">&nbsp;</label>
+                                    <div class="controls">
+                                        <button type="button" class="btn input-block-level">Add new client...</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                <div class="control-group span4">
+                                    <label class="control-label">Client Type</label>
+                                    <div class="controls">
+                                        <select class="input-block-level" id="clienttype">
+                                            <option>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="control-group span4">
+                                    <label class="control-label" id="investortype">Investor Type</label>
+                                    <div class="controls">
+                                        <select class="input-block-level" id="investortype2">
+                                            <option>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row-fluid">
                             <div class="span4">
-                                <button type="button" class="btn input-block-level">Add additional client...</button>
-                            </div>
-                            <div class="span3">
-                                <button type="button" class="btn input-block-level">Delete selected</button>
+                                <button type="button" class="btn input-block-level">Add secondary clients...</button>
                             </div>
                         </div>
                         <br>
                         <h5>Comments</h5>
                         <div class="row-fluid">
-                            <div class="span12">
+                            <div class="span8">
                                 <textarea rows="3" class="input-block-level"></textarea>
                             </div>
                         </div>                        
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default pull-right" disabled>Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#properties">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#properties">Next</button>
+                                <button type="button" class="btn btn-default pull-right" disabled>Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="properties">
-                <div class="accordion-heading row-fluid">
-                    <a class="accordion-toggle clearfix" data-toggle="collapse" href="#properties">Properties</a>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#properties">Properties</a>
                 </div>
-                <div class="accordion-body">
+                <div id="properties" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="propertylocationmarket"><mark>*</mark>propertylocationmarket</label>
+                                <label class="control-label" id="propertylocationmarket"><mark>*</mark> propertylocationmarket</label>
                                 <div class="controls">
                                     <input id="propertylocationmarket2" type="text" class="input-block-level" />
                                 </div>
@@ -164,19 +168,19 @@
                         </table>
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="lowpropertyvalue"><mark>*</mark>lowpropertyvalue</label>
+                                <label class="control-label" id="lowpropertyvalue"><mark>*</mark> lowpropertyvalue</label>
                                 <div class="controls">
                                     <input id="lowpropertyvalue2" type="text" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="highpropertyvalue"><mark>*</mark>highpropertyvalue</label>
+                                <label class="control-label" id="highpropertyvalue"><mark>*</mark> highpropertyvalue</label>
                                 <div class="controls">
                                     <input id="highpropertyvalue2" type="text" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="capitalraised"><mark>*</mark>capitalraised</label>
+                                <label class="control-label" id="capitalraised"><mark>*</mark> capitalraised</label>
                                 <div class="controls">
                                     <input id="capitalraised2" type="text" class="input-block-level" />
                                 </div>
@@ -184,36 +188,35 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default" data-toggle="collapse" href="#summary">Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#keydates">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keydates">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#summary">Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="keydates">
+            <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#keydates">Key Dates <em class="pull-right">1 required fields left</em></a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#keydates">Key Dates</a>
                 </div>
-                <div class="accordion-body">
+                <div id="keydates" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="startdate"><mark>*</mark>startdate</label>
+                                <label class="control-label" id="startdate"><mark>*</mark> startdate</label>
                                 <div class="controls">
                                     <input id="startdate2" type="text" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="pitchproposaldate"><mark>*</mark>pitch proposal date</label>
+                                <label class="control-label" id="pitchproposaldate"><mark>*</mark> pitch proposal date</label>
                                 <div class="controls">
                                     <input id="pitchproposaldate2" type="text" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="listingexpirationdate"><mark>*</mark>listing expiration date</label>
+                                <label class="control-label" id="listingexpirationdate"><mark>*</mark> listing expiration date</label>
                                 <div class="controls">
                                     <input id="listingexpirationdate2" type="text" class="input-block-level" />
                                 </div>
@@ -221,30 +224,29 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default" data-toggle="collapse" href="#properties">Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#commission">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#commission">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#properties">Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="commission">
+            <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#commission">Commission</a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#commission">Commission</a>
                 </div>
-                <div class="accordion-body">
+                <div id="commission" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="totalcommission"><mark>*</mark>totalcommission</label>
+                                <label class="control-label" id="totalcommission"><mark>*</mark> totalcommission</label>
                                 <div class="controls">
                                     <input id="totalcommission2" type="text" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="feepercentage"><mark>*</mark>feepercentage</label>
+                                <label class="control-label" id="feepercentage"><mark>*</mark> feepercentage</label>
                                 <div class="controls">
                                     <input id="feepercentage2" type="text" class="input-block-level" />
                                 </div>
@@ -253,36 +255,35 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default" data-toggle="collapse" href="#keydates">Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#keycontacts">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keycontacts">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keydates">Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="keycontacts">
+            <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#keycontacts">Key Contacts</a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#keycontacts">Key Contacts</a>
                 </div>
-                <div class="accordion-body">
+                <div id="keycontacts" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="primaryclientcontact"><mark>*</mark>primaryclientcontact</label>
+                                <label class="control-label" id="primaryclientcontact"><mark>*</mark> primaryclientcontact</label>
                                 <div class="controls">
                                     <input id="primaryclientcontact2" type="text" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="billtocontact"><mark>*</mark>billtocontact</label>
+                                <label class="control-label" id="billtocontact"><mark>*</mark> billtocontact</label>
                                 <div class="controls">
                                     <input id="billtocontact2" type="text" class="input-block-level" />
                                 </div>
                             </div>
                             <div class="control-group span4">
-                                <label class="control-label" id="generatingmarket"><mark>*</mark>generatingmarket</label>
+                                <label class="control-label" id="generatingmarket"><mark>*</mark> generatingmarket</label>
                                 <div class="controls">
                                     <input id="generatingmarket2" type="text" class="input-block-level" />
                                 </div>
@@ -290,7 +291,7 @@
                         </div>
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label class="control-label" id="dealmarket"><mark>*</mark>dealmarket</label>
+                                <label class="control-label" id="dealmarket"><mark>*</mark> dealmarket</label>
                                 <div class="controls">
                                     <input id="dealmarket2" type="text" class="input-block-level" />
                                 </div>
@@ -300,24 +301,23 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default" data-toggle="collapse" href="#commission">Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#competitors">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#competitors">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#commission">Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="competitors">
+            <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#competitors">Competitors</a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#competitors">Competitors</a>
                 </div>
-                <div class="accordion-body">
+                <div id="competitors" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label id="primary1" class="control-label"><mark>*</mark>Input</label>
+                                <label id="primary1" class="control-label"><mark>*</mark> Input</label>
                                 <div class="controls">
                                     <input id="primary12" type="text" class="input-block-level" />
                                 </div>
@@ -327,24 +327,23 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default" data-toggle="collapse" href="#keycontacts">Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#dealcosts">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#dealcosts">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#keycontacts">Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="dealcosts">
+            <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#dealcosts">Deal costs</a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#dealcosts">Deal costs</a>
                 </div>
-                <div class="accordion-body">
+                <div id="dealcosts" class="accordion-body collapse">
                     <div class="accordion-inner">
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label id="primary2" class="control-label"><mark>*</mark>Input</label>
+                                <label id="primary2" class="control-label"><mark>*</mark> Input</label>
                                 <div class="controls">
                                     <input id="primary22" type="text" class="input-block-level" />
                                 </div>
@@ -354,24 +353,24 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default" data-toggle="collapse" href="#competitors">Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#documents">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#documents">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#competitors">Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="documents">
+            <div class="accordion-group">
                 <div class="accordion-heading">
-                    <a class="accordion-toggle" data-toggle="collapse" href="#documents">Documents</a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#documents">Documents</a>
                 </div>
-                <div class="accordion-body">
+                <div id="documents" class="accordion-body collapse" >
                     <div class="accordion-inner">
+                        <textarea rows=999></textarea>
                         <div class="row-fluid">
                             <div class="control-group span4">
-                                <label id="primary3" class="control-label"><mark>*</mark>Input</label>
+                                <label id="primary3" class="control-label"><mark>*</mark> Input</label>
                                 <div class="controls">
                                     <input id="primary32" type="text" class="input-block-level" />
                                 </div>
@@ -381,21 +380,22 @@
                         </div>
                         <div class="row-fluid">
                             <div class="span4">&nbsp;</div>
-                            <div class="span4">&nbsp;</div>
-                            <div class="span4 btn-group">
-                                <a class="btn btn-default" data-toggle="collapse" href="#dealcosts">Back</a>
-                                <a class="btn btn-primary" data-toggle="collapse" href="#summary">Next</a>
+                            <div class="span4">
+                                <button type="button" class="btn btn-primary pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#summary">Next</button>
+                                <button type="button" class="btn btn-default pull-right" data-toggle="collapse" data-parent="#accordion2" data-target="#dealcosts">Back</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+                        <textarea rows=999></textarea>
+
         </div>
     </div>
     <script src="scripts/jquery-1.7.2.min.js"></script>
     <script src="scripts/knockout-2.2.1.debug.js"></script>
+    <script src="scripts/bootstrap-collapse202.js"></script>
     <script src="scripts/viewmodels.js"></script>
-    <script src="scripts/cstm-collapse.js"></script>
     <script src="scripts/app.js"></script>
 </body>
 

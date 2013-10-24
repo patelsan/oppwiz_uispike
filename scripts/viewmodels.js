@@ -41,7 +41,7 @@
       this.fieldMap.push({
         InfoGroup: 'Summary',
         GroupID: 'summary',
-        Fields: ko.observableArray([this.defineField('Opportunity Name', 'opportunityname'), this.defineField('Opportunity Status', 'opportunitystatus'), this.defineField('Transaction Type', 'transactiontype'), this.defineField('Transaction Sub Type', 'transactionsubtype'), this.defineField('Close Probability', 'closeprobability'), this.defineField('Client', 'client')])
+        Fields: ko.observableArray([this.defineField('Opportunity Name', 'opportunityname'), this.defineField('Opportunity Status', 'opportunitystatus'), this.defineField('Transaction Type', 'transactiontype'), this.defineField('Transaction Sub Type', 'transactionsubtype'), this.defineField('Close Probability', 'closeprobability'), this.defineField('Security level', 'securitylevel'), this.defineField('Client', 'client'), this.defineField('Client Type', 'clienttype'), this.defineField('Investor Type', 'investortype')])
       });
       this.fieldMap.push({
         InfoGroup: 'Properties',
@@ -114,7 +114,7 @@
 
   Opportunity = (function() {
     function Opportunity() {
-      this.isCompleted = __bind(this.isCompleted, this);
+      this.isSupplied = __bind(this.isSupplied, this);
       this.isRequired = __bind(this.isRequired, this);
       this.OpportunityName = ko.observable();
       this.TransactionType = ko.observable();
@@ -130,7 +130,7 @@
       });
     };
 
-    Opportunity.prototype.isCompleted = function(fieldId) {
+    Opportunity.prototype.isSupplied = function(fieldId) {
       var _this = this;
       return ko.computed(function() {
         return Boolean(fieldId.length % 2);

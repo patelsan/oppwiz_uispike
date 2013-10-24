@@ -21,7 +21,7 @@ class NavigationViewModel
   createFieldMap: =>
     #will create the field map dynamically, hardcoding it for now
 
-    this.fieldMap.push({InfoGroup: 'Summary', GroupID:'summary',Fields: ko.observableArray([this.defineField('Opportunity Name','opportunityname'), this.defineField('Opportunity Status','opportunitystatus'), this.defineField('Transaction Type','transactiontype'), this.defineField('Transaction Sub Type','transactionsubtype'), this.defineField('Close Probability','closeprobability'), this.defineField('Client','client')])})
+    this.fieldMap.push({InfoGroup: 'Summary', GroupID:'summary',Fields: ko.observableArray([this.defineField('Opportunity Name','opportunityname'), this.defineField('Opportunity Status','opportunitystatus'), this.defineField('Transaction Type','transactiontype'), this.defineField('Transaction Sub Type','transactionsubtype'), this.defineField('Close Probability','closeprobability'), this.defineField('Security level','securitylevel'), this.defineField('Client','client'), this.defineField('Client Type','clienttype'), this.defineField('Investor Type','investortype')])})
     this.fieldMap.push({InfoGroup: 'Properties', GroupID:'properties',Fields: ko.observableArray([this.defineField('Property Location Market','propertylocationmarket'), this.defineField('Low Property Value','lowpropertyvalue'), this.defineField('High Property Value','highpropertyvalue'), this.defineField('Capital Raised','capitalraised')])})
     this.fieldMap.push({InfoGroup: 'Key Dates', GroupID:'keydates',Fields: ko.observableArray([this.defineField('Start Date','startdate'), this.defineField('Pitch Proposal Date','pitchproposaldate'), this.defineField('Listing Expiration Date','listingexpirationdate')])})
     this.fieldMap.push({InfoGroup: 'Commission', GroupID:'commission',Fields: ko.observableArray([this.defineField('Total Commission','totalcommission'), this.defineField('Fee Percentage','feepercentage')])})
@@ -53,7 +53,7 @@ class Opportunity
   isRequired:(fieldId)=>
     ko.computed(=> Boolean(fieldId.length % 2))
 
-  isCompleted:(fieldId)=>
+  isSupplied:(fieldId)=>
     ko.computed(=> Boolean(fieldId.length % 2))
 
 namespace 'Models', (exports)->
@@ -65,3 +65,4 @@ class OpportunityViewModel
 
 namespace 'Models', (exports)->
   exports.OpportunityViewModel = OpportunityViewModel
+  
