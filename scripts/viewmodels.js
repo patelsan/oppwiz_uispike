@@ -38,52 +38,36 @@
     }
 
     NavigationViewModel.prototype.createFieldMap = function() {
-      this.fieldMap.push({
-        InfoGroup: 'Summary',
-        GroupID: 'summary',
-        Fields: ko.observableArray([this.defineField('Opportunity Name', 'opportunityname'), this.defineField('Opportunity Status', 'opportunitystatus'), this.defineField('Transaction Type', 'transactiontype'), this.defineField('Transaction Sub Type', 'transactionsubtype'), this.defineField('Close Probability', 'closeprobability'), this.defineField('Security level', 'securitylevel'), this.defineField('Client', 'client'), this.defineField('Client Type', 'clienttype'), this.defineField('Investor Type', 'investortype')])
-      });
-      this.fieldMap.push({
-        InfoGroup: 'Properties',
-        GroupID: 'properties',
-        Fields: ko.observableArray([this.defineField('Property Location Market', 'propertylocationmarket'), this.defineField('Low Property Value', 'lowpropertyvalue'), this.defineField('High Property Value', 'highpropertyvalue'), this.defineField('Capital Raised', 'capitalraised')])
-      });
-      this.fieldMap.push({
-        InfoGroup: 'Key Dates',
-        GroupID: 'keydates',
-        Fields: ko.observableArray([this.defineField('Start Date', 'startdate'), this.defineField('Pitch Proposal Date', 'pitchproposaldate'), this.defineField('Listing Expiration Date', 'listingexpirationdate')])
-      });
-      this.fieldMap.push({
-        InfoGroup: 'Commission',
-        GroupID: 'commission',
-        Fields: ko.observableArray([this.defineField('Total Commission', 'totalcommission'), this.defineField('Fee Percentage', 'feepercentage')])
-      });
-      this.fieldMap.push({
-        InfoGroup: 'Key Contacts',
-        GroupID: 'keycontacts',
-        Fields: ko.observableArray([this.defineField('Primary Client Contact', 'primaryclientcontact'), this.defineField('Bill To Contact', 'billtocontact'), this.defineField('Generating Market', 'generatingmarket'), this.defineField('Deal Market', 'dealmarket')])
-      });
-      this.fieldMap.push({
-        InfoGroup: 'Competitors',
-        GroupID: 'competitors',
-        Fields: ko.observableArray([this.defineField('Primary1', 'primary1')])
-      });
-      this.fieldMap.push({
-        InfoGroup: 'Deal costs',
-        GroupID: 'dealcosts',
-        Fields: ko.observableArray([this.defineField('Primary2', 'primary2')])
-      });
-      return this.fieldMap.push({
-        InfoGroup: 'Documents',
-        GroupID: 'documents',
-        Fields: ko.observableArray([this.defineField('Primary3', 'primary3')])
+      var _this = this;
+      return $('div[data-group]').each(function(index, groupElement) {
+        var dataGroup, id;
+        id = $(groupElement).attr('id');
+        if (id == null) {
+          throw new Error('Id for the group element is required in order to collapse/ expand it..');
+        }
+        dataGroup = _this.defineField($(groupElement).data('group'), id);
+        $('div[data-field]', groupElement).each(function(index, fieldElement) {
+          var field;
+          id = $(fieldElement).attr('id');
+          if (id == null) {
+            throw new Error('Id for the field element is required for navigation.');
+          }
+          field = _this.defineField($(fieldElement).data('field'), id);
+          return dataGroup.Fields.push(field);
+        });
+        return _this.fieldMap.push(dataGroup);
       });
     };
 
-    NavigationViewModel.prototype.defineField = function(name, id) {
+    NavigationViewModel.prototype.defineField = function(definition, elementId) {
+      if (typeof definition !== 'object') {
+        throw new Error('Error while creating the field map. Attribute names must have double qotes around it.');
+      }
       return {
-        Name: name,
-        ID: id,
+        Name: definition.name,
+        ID: elementId,
+        Attibute: definition.attribute,
+        Fields: ko.observableArray(),
         Display: ko.observable(true)
       };
     };
@@ -159,3 +143,7 @@
   });
 
 }).call(this);
+
+/*
+//@ sourceMappingURL=viewmodels.map
+*/

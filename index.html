@@ -25,7 +25,7 @@
         </div>
         <hr>
         <div data-bind="foreach: fieldMap" class="nav-tree">
-            <h5 data-bind="text: InfoGroup"></h5>
+            <h5 data-bind="text: Name"></h5>
             <div data-bind="foreach: $data.Fields" class="nav-branch">
                 <a class="btn btn-inverse btn-mini" data-bind="attr: {title: Name, href: '#' + $data.ID}, css: {'req': $root.opportunity.isRequired.bind(null, $data.ID)(),'supplied': $root.opportunity.isSupplied.bind(null, $data.ID)()}, visible: Display, text: Name"></a>
             </div>
@@ -33,21 +33,21 @@
     </div>
     <div class="spn10-abs" id="workspace">
         <div class="accordion" id="accordion2">
-            <div class="accordion-group" id="summary">
+            <div class="accordion-group" id="summary" data-group='{"name": "Summary"}'>
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" href="#summary">Summary <em class="pull-right">2 required fields left</em></a>
                 </div>
                 <div class="accordion-body">
                     <div class="accordion-inner">
                         <div class="row-fluid">
-                            <div class="control-group span8">
-                                <label id="opportunityname" class="control-label"><mark>*</mark>Opportunity Name</label>
+                            <div class="control-group span8" id="opportunityname" data-field='{"name": "Opportunity Name", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>Opportunity Name</label>
                                 <div class="controls">
                                     <input id="opportunityname2" type="text" placeholder="Input" class="input-block-level req" data-bind="value: data.OpportunityName" />
                                 </div>
                             </div>
-                            <div class="control-group span4">
-                                <label class="control-label" id="opportunitystatus"><mark>*</mark>Opportunity Status</label>
+                            <div class="control-group span4" id="opportunitystatus" data-field='{"name": "Opportunity Status", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>Opportunity Status</label>
                                 <div class="controls">
                                     <select class="input-block-level req" id="opportunitystatus2">
                                         <option>Select</option>
@@ -56,15 +56,15 @@
                             </div>
                         </div>
                        <div class="row-fluid">
-                            <div class="control-group span8">
-                                <label class="control-label" id="client"><mark>*</mark>Primary Client</label>
+                            <div class="control-group span8" id="client" data-field='{"name": "Primary Client", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>Primary Client</label>
                                 <div class="controls cstm-append">
                                     <input id="client2" class="input-block-level" type="text" placeholder="Input">
                                     <button class="btn" type="button">!</button>
                                 </div>
                             </div>
-                            <div class="control-group span4">
-                                <label class="control-label" id="transactiontype"><mark>*</mark>Transaction Type</label>
+                            <div class="control-group span4" id="transactiontype" data-field='{"name": "Transaction Type", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>Transaction Type</label>
                                 <div class="controls">
                                     <input id="transactiontype2" type="text" placeholder="Input" class="input-block-level" />
                                 </div>
@@ -144,15 +144,15 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="properties">
+            <div class="accordion-group" id="properties" data-group='{"name": "Properties"}'>
                 <div class="accordion-heading row-fluid">
                     <a class="accordion-toggle clearfix" data-toggle="collapse" href="#properties">Properties</a>
                 </div>
                 <div class="accordion-body">
                     <div class="accordion-inner">
                         <div class="row-fluid">
-                            <div class="control-group span4">
-                                <label class="control-label" id="propertylocationmarket"><mark>*</mark>propertylocationmarket</label>
+                            <div class="control-group span4" id="propertylocationmarket" data-field='{"name": "Property Location Market", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>propertylocationmarket</label>
                                 <div class="controls">
                                     <input id="propertylocationmarket2" type="text" class="input-block-level" />
                                 </div>
@@ -163,14 +163,14 @@
                             <tbody><tr><td>Teal One Plaza</td><td>455 North Wacker Drive</td><td>Schaumburg</td><td>IL</td><td>60169</td></tr><tr><td>Ptarmigan Pterrace</td><td>8323 S. Whipple Dr.</td><td>Highwood</td><td>IL</td><td>60040</td></tr><tr><td>Paladin Tower</td><td>4321 East Ohio Avenue</td><td>Chicago</td><td>IL</td><td>60601</td></tr><tr><td>Kimjongun Place</td><td>4527 North Harlem Avenue</td><td>Chicago</td><td>IL</td><td>60657</td></tr><tr><td>Juche Executive Suites</td><td>4527 Peoples Plaza</td><td>Highland Park</td><td>IL</td><td>60035</td></tr></tbody>
                         </table>
                         <div class="row-fluid">
-                            <div class="control-group span4">
-                                <label class="control-label" id="lowpropertyvalue"><mark>*</mark>lowpropertyvalue</label>
+                            <div class="control-group span4" id="lowpropertyvalue" data-field='{"name": "Low Proerty Value", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>lowpropertyvalue</label>
                                 <div class="controls">
                                     <input id="lowpropertyvalue2" type="text" class="input-block-level" />
                                 </div>
                             </div>
-                            <div class="control-group span4">
-                                <label class="control-label" id="highpropertyvalue"><mark>*</mark>highpropertyvalue</label>
+                            <div class="control-group span4" id="highpropertyvalue" data-field='{"name": "High Property Value", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>highpropertyvalue</label>
                                 <div class="controls">
                                     <input id="highpropertyvalue2" type="text" class="input-block-level" />
                                 </div>
@@ -193,21 +193,21 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="keydates">
+            <div class="accordion-group" id="keydates" data-group='{"name": "Key Dates"}'>
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" href="#keydates">Key Dates <em class="pull-right">1 required fields left</em></a>
                 </div>
                 <div class="accordion-body">
                     <div class="accordion-inner">
                         <div class="row-fluid">
-                            <div class="control-group span4">
-                                <label class="control-label" id="startdate"><mark>*</mark>startdate</label>
+                            <div class="control-group span4" id="startdate" data-field='{"name": "Start Date", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>startdate</label>
                                 <div class="controls">
                                     <input id="startdate2" type="text" class="input-block-level" />
                                 </div>
                             </div>
-                            <div class="control-group span4">
-                                <label class="control-label" id="pitchproposaldate"><mark>*</mark>pitch proposal date</label>
+                            <div class="control-group span4" id="pitchproposaldate" data-field='{"name": "Pitch Proposal Date", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>pitch proposal date</label>
                                 <div class="controls">
                                     <input id="pitchproposaldate2" type="text" class="input-block-level" />
                                 </div>
@@ -230,21 +230,21 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="commission">
+            <div class="accordion-group" id="commission" data-group='{"name": "Commission"}'>
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" href="#commission">Commission</a>
                 </div>
                 <div class="accordion-body">
                     <div class="accordion-inner">
                         <div class="row-fluid">
-                            <div class="control-group span4">
-                                <label class="control-label" id="totalcommission"><mark>*</mark>totalcommission</label>
+                            <div class="control-group span4" id="totalcommission" data-field='{"name": "Total Commission", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>totalcommission</label>
                                 <div class="controls">
                                     <input id="totalcommission2" type="text" class="input-block-level" />
                                 </div>
                             </div>
-                            <div class="control-group span4">
-                                <label class="control-label" id="feepercentage"><mark>*</mark>feepercentage</label>
+                            <div class="control-group span4" id="feepercentage" data-field='{"name": "Fee Percentage", "attribute": ""}'>
+                                <label class="control-label"><mark>*</mark>feepercentage</label>
                                 <div class="controls">
                                     <input id="feepercentage2" type="text" class="input-block-level" />
                                 </div>
@@ -262,7 +262,7 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="keycontacts">
+            <div class="accordion-group" id="keycontacts" data-group='{"name": "Key Contacts"}'>
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" href="#keycontacts">Key Contacts</a>
                 </div>
@@ -309,7 +309,7 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="competitors">
+            <div class="accordion-group" id="competitors" data-group='{"name": "Competitors"}'>
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" href="#competitors">Competitors</a>
                 </div>
@@ -336,7 +336,7 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="dealcosts">
+            <div class="accordion-group" id="dealcosts" data-group='{"name": "Deal Costs"}'>
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" href="#dealcosts">Deal costs</a>
                 </div>
@@ -363,7 +363,7 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-group" id="documents">
+            <div class="accordion-group" id="documents" data-group='{"name": "Documents"}'>
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" href="#documents">Documents</a>
                 </div>
